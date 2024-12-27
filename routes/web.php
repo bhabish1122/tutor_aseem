@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
 
@@ -51,3 +52,6 @@ Route::get("routing/{name}",function($name){
 Route::get("tutor/index",[TutorController::class,"index"]);
 Route::get("tutor/search/{searchString}",[TutorController::class,"search"]);
 Route::get("tutor/edit/{searchString}",[TutorController::class,"edit"]);
+
+Route::get("form/index",[FormController::class,"index"])->name("form.index");
+Route::post("form/store",[ FormController::class,"store"])->name("form.store");
