@@ -55,3 +55,7 @@ Route::get("tutor/edit/{searchString}",[TutorController::class,"edit"]);
 
 Route::get("form/index",[FormController::class,"index"])->name("form.index");
 Route::post("form/store",[ FormController::class,"store"])->name("form.store");
+
+Route::get("get/list",[FormController::class,"getList"])->name("get.list");
+Route::get("delete/data/{id}",[FormController::class,"deleteData"])->name("delete.data");
+
