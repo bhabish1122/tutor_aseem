@@ -73,7 +73,8 @@
                 <td style="text-align: center">{{ $d->email }}</td>
                 <td style="text-align: center">{{ $d->address }}</td>
                 <td>
-                    <a href="">Edit</a>
+                    {{-- <a href="{{ url('edit/'.$d->id) }}">Edit</a> --}}
+                    <a href="{{ route('edit.data',['id' => $d->id]) }}">Edit</a>
 
 
                     {{-- <a href="{{ url('delete/data/'.$d->id) }}">Delete</a> --}}

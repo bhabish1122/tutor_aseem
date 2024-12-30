@@ -55,4 +55,19 @@ class FormController extends Controller
         session()->flash("message","Data deleted successfully");
         return redirect()->back();
     }
+
+    public function edit($id){
+        $data = Information::where("id",$id)->first();
+        return view('edit-form',compact("data"));
+    }
+
+    public function update(Request $request, $id){
+        $information = Information::where("id",$id)->first();
+        $information->name = $request->name;
+        $information->email = $request->email;
+        $information->address = $request->address;
+        $information->save();
+
+        return redirect()->route('get.list');
+    }
 }
