@@ -8,5 +8,7 @@
 </head>
 <body>
     <a href="{{ route('form.index') }}">Form</a>
+    <a href="{{ route('get.list') }}">Get List</a>
+
 </body>
 </html>

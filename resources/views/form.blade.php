@@ -7,6 +7,13 @@
     <title>Form</title>
 </head>
 <body>
+
+    @if(session()->has('message'))
+        <p>
+            {{  session()->get('message') }}
+        </p> 
+    @endif
+
     {{-- <form action="{{ url('form/store/') }}" method="post"> --}}
     <form action="{{ route('form.store') }}" method="post">
 
