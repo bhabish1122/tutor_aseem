@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>
+    {{-- <p>
         <span style="font-size: 20px; font-weight:bold; margin-left:100px">
             
             ID
@@ -44,7 +44,7 @@
                 {{ $d->address }}
             </span>
         </p>
-    @endforeach
+    @endforeach --}}
 
     @if (session()->has('message'))
         <p style="color:green; text-align:center">
@@ -63,12 +63,9 @@
             <th>Address</th>
             <th>Action</th>
         </tr>
-        <?php
-            $count = 1;
-        ?>
-        @foreach ($data as $d)            
+        @foreach ($data as $index => $d)            
             <tr>
-                <td style="text-align: center">{{ $count }}</td>
+                <td style="text-align: center">{{ $index+1 }}</td>
                 <td style="text-align: center">{{ $d->name }}</td>
                 <td style="text-align: center">{{ $d->email }}</td>
                 <td style="text-align: center">{{ $d->address }}</td>
@@ -83,9 +80,6 @@
                 </td>
            
             </tr>
-            <?php
-                $count++ 
-            ?>
         @endforeach
     </table>
 </body>

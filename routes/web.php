@@ -15,11 +15,6 @@ use App\Http\Controllers\TutorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::get("homepage/{name}/{age}",function($name,$age){
     $students  = [
         "bhabihs",
@@ -48,6 +43,9 @@ Route::get("routing/{name}",function($name){
     ]);
 });
 
+Route::get('/', function () {
+    return view('welcome');
+})->middleware("custom.middleware");
 
 Route::get("tutor/index",[TutorController::class,"index"]);
 Route::get("tutor/search/{searchString}",[TutorController::class,"search"]);
