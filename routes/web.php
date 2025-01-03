@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,7 @@ Route::get("routing/{name}",function($name){
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware("custom.middleware");
+})->middleware(["custom.middleware"]);
 
 Route::get("tutor/index",[TutorController::class,"index"]);
 Route::get("tutor/search/{searchString}",[TutorController::class,"search"]);
@@ -59,3 +60,12 @@ Route::get("delete/data/{id}",[FormController::class,"deleteData"])->name("delet
 Route::get("edit/{id}",[FormController::class,"edit"])->name("edit.data");
 Route::post("update/{id}",[FormController::class,"update"])->name("update.data");
 
+Route::get("locale/{lang?}",function($lang=null){
+    App::setLocale($lang); // for making localization dynamic
+    return view("localization");
+})->name("locale");
+
+Route::get("localeinfo/{lang?}",function($lang=null ){
+    App::setLocale($lang); // for making localization dynamic
+    return view("localeinfo");
+})->name("set.locale");
