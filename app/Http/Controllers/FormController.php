@@ -27,6 +27,8 @@ class FormController extends Controller
         $email = $request->email;
 
 
+        csrf_token();
+
         // dd($name,$address,$email); //for debugging
 
         $information  = new Information();

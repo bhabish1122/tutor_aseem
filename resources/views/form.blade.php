@@ -17,8 +17,8 @@
     {{-- <form action="{{ url('form/store/') }}" method="post"> --}}
     <form action="{{ route('form.store') }}" method="post">
 
-        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}" autocomplete="off"> --}}
-        @csrf
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" autocomplete="off">
+        {{-- @csrf --}}
 
         <table>
             <tr>

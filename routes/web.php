@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TutorController;
+use App\Http\Controllers\FileUploadController;
 use Illuminate\Support\Facades\App;
 
 /*
@@ -69,3 +70,7 @@ Route::get("localeinfo/{lang?}",function($lang=null ){
     App::setLocale($lang); // for making localization dynamic
     return view("localeinfo");
 })->name("set.locale");
+
+
+Route::get("upload/form",[FileUploadController::class,"index"])->name("upload.form");
+Route::post("upload/file",[FileUploadController::class,"upload"])->name("upload.file");
