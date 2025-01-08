@@ -10,22 +10,32 @@
     <form action="{{ route('upload.file') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="file" name="image" id="image">
-        @error("image")
+        {{-- @error("image")
             <span>{{ $message }}</span>
-        @enderror
+        @enderror --}}
         <button type="submit">Upload</button>
     </form>
 
-
-
     <table>
-        @foreach($images as $image)
         <tr>
+            <th>SN</th>
+            <th>Image</th>
+        </tr>
+        @foreach($images as $index => $image)
+        <tr>
+            <td>{{ ++$index }}</td>
             <td>
-                <img src="{{ asset('storage/uploads/'.$image) }}" alt="" srcset="">
+                <img src="{{ asset('storage/'.$image->file_name) }}" width="200px" alt="" srcset="">
             </td>
         </tr>
+        @endforeach
     </table>
+
+    <script>
+        @if(session()->has('message'))
+            alert("{{ session()->get('message') }}")
+        @endif
+    </script>
 
 </body>
 </html>

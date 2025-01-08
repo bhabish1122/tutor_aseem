@@ -9,7 +9,10 @@ class FileUploadController extends Controller
 {
     public function index(Request $request){
         //dd($request->all());  works fine if request is made
-        return view("upload-file");
+        $images = FileUpload::all();
+        return view("upload-file")->with([
+            "images" => $images
+        ]);
     }
 
     public function upload(Request $request){
@@ -21,24 +24,27 @@ class FileUploadController extends Controller
         ]);
 
         //default upload
-        //$request->file("image")->store("uploads","public");
+        $file_name = $request->file("image")->store("uploads/new/","public"); // generates random string for filename
         
         // assiging custom name to uploaded file
 
-        $date = date("Y_m_d_H_i_s");
-        $name = "img_".$date; // custom name
-        $extension = $request->file('image')->getClientOriginalExtension(); // original extension
+        /*        
+            $date = date("Y_m_d_H_i_s");
+            $name = "img_".$date; // custom name
+            $extension = $request->file('image')->getClientOriginalExtension(); // original extension
+            //formatting into the name.extension
+            //$file_name = $name.".".$extension;
+            $file_name = "{$name}.{$extension}";
+            
+            $request->file("image")->storeAs("public/uploads", $file_name );
+        */
         
         
-        //formatting into the name.extension
-        //$file_name = $name.".".$extension;
-        $file_name = "{$name}.{$extension}";
-        
-        $request->file("image")->storeAs("public/uploads", $file_name );
-
         FileUpload::create([
             "file_name" => $file_name,
         ]);
+        
+        
 
         
 /*
