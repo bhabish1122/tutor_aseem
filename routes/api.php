@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\TestAPIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get("test",function(){
-    return response()->json([
-        "codeword" => "hello"
-    ]);
-});
+Route::get("test/index",[TestAPIController::class,"index"]);
+Route::get("test/store",[TestAPIController::class,"store"]); // post
+Route::get("test/get",[TestAPIController::class,"getAll"]);
